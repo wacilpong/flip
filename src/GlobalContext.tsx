@@ -1,4 +1,10 @@
-import {createContext, Dispatch, FunctionComponent, useState} from "react";
+import {
+  createContext,
+  Dispatch,
+  FunctionComponent,
+  SetStateAction,
+  useState,
+} from "react";
 import {CardStatus} from "./types";
 import {random} from "./utils";
 
@@ -6,9 +12,11 @@ interface Context {
   total: number;
   smilePoint: number;
   sadPoint: number;
-  setTotal: Dispatch<React.SetStateAction<number>>;
-  setSmilePoint: Dispatch<React.SetStateAction<number>>;
-  setSadPoint: Dispatch<React.SetStateAction<number>>;
+  sadCount: number;
+  setTotal: Dispatch<SetStateAction<number>>;
+  setSmilePoint: Dispatch<SetStateAction<number>>;
+  setSadPoint: Dispatch<SetStateAction<number>>;
+  setSadCount: Dispatch<SetStateAction<number>>;
   caculateTotal: (_: CardStatus) => void;
 }
 
@@ -18,6 +26,7 @@ const GlobalContextProvider: FunctionComponent = ({children}) => {
   const [total, setTotal] = useState(0);
   const [smilePoint, setSmilePoint] = useState(random(100));
   const [sadPoint, setSadPoint] = useState(random(300));
+  const [sadCount, setSadCount] = useState(random(16));
 
   const caculateTotal = (status: CardStatus) => {
     setTotal((prev) =>
@@ -34,6 +43,8 @@ const GlobalContextProvider: FunctionComponent = ({children}) => {
         setSmilePoint,
         sadPoint,
         setSadPoint,
+        sadCount,
+        setSadCount,
         caculateTotal,
       }}
     >

@@ -1,14 +1,15 @@
 import {useState, useEffect} from "react";
 import Card from "./components/Card";
 import Status from "./components/Status";
+import GlobalContextProvider from "./GlobalContext";
 import {CardStatus} from "./types";
 import {random} from "./utils";
-import GlobalContextProvider from "./GlobalContext";
 import "./App.css";
 
 const DISPLAY_COUNT = 32;
 
 function App() {
+  const [sadCount, setSadCount] = useState(random(16));
   const [round, setRound] = useState(1);
   const [cards, setCards] = useState<CardStatus[]>([]);
 
@@ -17,7 +18,7 @@ function App() {
       Array(DISPLAY_COUNT)
         .fill(null)
         .map((_, i) => {
-          if (i < random(10)) {
+          if (i < sadCount) {
             return "sad";
           }
 
@@ -25,7 +26,7 @@ function App() {
         })
         .sort(() => Math.random() - 0.5)
     );
-  }, []);
+  }, [sadCount]);
 
   return (
     <GlobalContextProvider>
@@ -42,7 +43,12 @@ function App() {
               </li>
             ))}
           </ul>
-          <Status round={round} setRound={setRound} />
+          <Status
+            round={round}
+            setRound={setRound}
+            sadCount={sadCount}
+            setSadCount={setSadCount}
+          />
         </main>
       </div>
     </GlobalContextProvider>
