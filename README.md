@@ -1,46 +1,14 @@
-# Getting Started with Create React App
+# 카드 뒤집기 게임
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 게임규칙
 
-## Available Scripts
+1. 뒤집혀 있는 32장의 카드가 노출된다.
+2. 카드를 뒤집었을 때 스마일카드가 나오면 점수 +, 불행카드가 나오면 점수 -
+3. 각 라운드마다 불행카드의 개수와 손해점수가 주어진다.
+4. 제한 시간 내에 카드를 뒤집고 선택 완료 버튼을 눌러야 한다.
+5. 총 10개의 라운드를 진행한다.
+6. (참고) 손해점수가 스마일카드 점수보다 항상 커야 한다.
 
-In the project directory, you can run:
+### 게임의 목적
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+위험(불행카드)이 수반되는 의사결정 상황에서 개인이 얼마나 위험을 감수하는 행동을 하는지 알 수 있다.
