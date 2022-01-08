@@ -26,24 +26,70 @@ ul {
 }
 
 .card {
+  background: white;
   position: relative;
   cursor: pointer;
   border: 1px solid lightgray;
   width: 60px;
   height: 100px;
   margin: 10px;
-}
-
-.card.unselected::before {
-  content: "";
-  position: absolute;
-  background-color: lightgray;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  display: flex;
+  perspective: 600px;
 }
 
 .card.fliped {
   pointer-events: none;
+}
+
+.card > div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s ease-in-out;
+  backface-visibility: hidden;
+  border-radius: 4px;
+  box-shadow: 4px 4px 10px #0004;
+}
+.card > .back {
+  border: 2px solid #222;
+  background-color: #555;
+  background-image: linear-gradient(30deg, #444 12%, transparent 12.5%, transparent 87%, #444 87.5%, #444),
+    linear-gradient(150deg, #444 12%, transparent 12.5%, transparent 87%, #444 87.5%, #444),
+    linear-gradient(30deg, #444 12%, transparent 12.5%, transparent 87%, #444 87.5%, #444),
+    linear-gradient(150deg, #444 12%, transparent 12.5%, transparent 87%, #444 87.5%, #444),
+    linear-gradient(60deg, #888 25%, transparent 25.5%, transparent 75%, #888 75%, #888),
+    linear-gradient(60deg, #888 25%, transparent 25.5%, transparent 75%, #888 75%, #888);
+  background-position: 0 0, 0 0, 25px 50px, 25px 50px, 0 0, 25px 50px;
+  background-size: 10px 20px;
+  transform: rotateY(0);
+}
+.card > .back.open {
+  transform: rotateY(180deg);
+}
+
+.card > .front {
+  pointer-events: none;
+  transform: rotateY(-180deg);
+}
+.card > .front.good {
+  border: 2px solid #99aaff;
+  background: linear-gradient(45deg, #ccddff, #aabbff);
+}
+
+.card > .front.bad {
+  border: 2px solid #a91d2b;
+  background: linear-gradient(45deg, #ed6393, #d83f3f);
+}
+.card > .front > img {
+  width: 50px;
+  height: 70px;
+}
+.card > .front.open {
+  transform: rotateY(0deg);
 }
