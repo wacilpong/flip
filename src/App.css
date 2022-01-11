@@ -16,6 +16,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 0;
 }
 
 .list {
@@ -38,6 +39,7 @@ ul {
   border: 0;
   display: flex;
   perspective: 600px;
+  transform: translateY(100vh);
 }
 
 .card.fliped {
@@ -92,4 +94,17 @@ ul {
 }
 .card > .front.open {
   transform: rotateY(0deg);
+}
+
+.card.showCard {
+  animation: showCard 0.5s ease-in-out forwards;
+}
+
+@keyframes showCard {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

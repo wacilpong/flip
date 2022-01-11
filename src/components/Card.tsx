@@ -1,4 +1,4 @@
-import { MouseEvent, useContext, useState } from 'react';
+import { MouseEvent, useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../GlobalContext';
 import Bad from '../images/bad.png';
 import Good from '../images/good.png';
@@ -6,11 +6,13 @@ import { CardStatus } from '../types';
 
 interface Props {
   status: CardStatus;
+  cardNumber: number;
 }
 
-export default function Card({ status }: Props) {
+export default function Card({ status, cardNumber }: Props) {
   const context = useContext(GlobalContext);
   const [open, isOpen] = useState(false);
+  const [showAnimation, isShowAnimation] = useState(false);
   const onClickCard = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
     const {
       dataset: { status },
@@ -23,9 +25,14 @@ export default function Card({ status }: Props) {
 
     context?.caculateTotal(status as CardStatus);
   };
-
+  useEffect(() => {
+    setTimeout(() => isShowAnimation(true), cardNumber * 100);
+  }, []);
   return (
-    <button className={`card ${open ? 'fliped' : ''}`} data-status={status} onClick={onClickCard}>
+    <button
+      className={`card ${open ? 'fliped' : ''} ${showAnimation ? 'showCard' : ''}`}
+      data-status={status}
+      onClick={onClickCard}>
       <div className={`back ${open ? 'open' : ''}`}></div>
       <div className={`front ${open ? 'open' : ''} ${status === 'sad' ? 'bad' : 'good'}`}>
         {<img src={status === 'sad' ? Bad : Good} alt='' />}
