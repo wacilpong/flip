@@ -1,6 +1,6 @@
-import {Dispatch, SetStateAction, useContext} from "react";
-import {GlobalContext} from "../GlobalContext";
-import {random} from "../utils";
+import { Dispatch, SetStateAction, useContext } from 'react';
+import { GlobalContext } from '../GlobalContext';
+import { random } from '../utils';
 
 interface Props {
   round: number;
@@ -11,26 +11,21 @@ interface Props {
 
 const TOTAL_ROUND = 10;
 
-export default function Status({
-  round,
-  setRound,
-  sadCount,
-  setSadCount,
-}: Props) {
+export default function Status({ round, setRound, sadCount, setSadCount }: Props) {
   const context = useContext(GlobalContext);
 
   if (!context) {
     return null;
   }
 
-  const {total, smilePoint, sadPoint, setSmilePoint, setSadPoint} = context;
+  const { total, smilePoint, sadPoint, setSmilePoint, setSadPoint } = context;
 
   const onClickComplete = () => {
     if (round >= TOTAL_ROUND) {
       alert(
         `게임이 종료되었습니다. 총 이익은 ${context?.total.toLocaleString()}!\n${
-          context?.total < 0 ? "위험을 즐기시네요~" : "wow~"
-        }`
+          context?.total < 0 ? '위험을 즐기시네요~' : 'wow~'
+        }`,
       );
       return;
     }
@@ -43,13 +38,15 @@ export default function Status({
 
   return (
     <>
-      <ul className="status">
+      <ul className='status'>
         <li>스마일카드 이익: {smilePoint}</li>
         <li>불행카드 손해: {sadPoint}</li>
         <li>불행카드 개수: {sadCount}</li>
         <li>총 이익: {total}</li>
       </ul>
-      <button onClick={onClickComplete}>선택완료 (다음 라운드로 gogo)</button>
+      <button className='next' onClick={onClickComplete}>
+        선택완료 (다음 라운드로 gogo)
+      </button>
     </>
   );
 }
