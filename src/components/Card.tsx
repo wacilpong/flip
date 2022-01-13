@@ -13,7 +13,10 @@ export default function Card({ status, cardNumber }: Props) {
   const context = useContext(GlobalContext);
   const [open, isOpen] = useState(false);
   const [showAnimation, isShowAnimation] = useState(false);
-  const frontClassNames = useMemo(() => ['front', open ? 'open' : '', status === 'sad' ? 'bad' : 'good'].join(), [status, open]);
+  const frontClassNames = useMemo(
+    () => ['front', open ? 'open' : '', status === 'sad' ? 'bad' : 'good'].join(' '),
+    [status, open],
+  );
 
   const onClickCard = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
     const {
